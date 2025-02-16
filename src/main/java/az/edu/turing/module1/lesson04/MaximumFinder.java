@@ -12,15 +12,15 @@ public class MaximumFinder {
         int length = sc.nextInt();
         int[] arr = new int[length];
 
-        for(int i=0;i<length;i++){
-            arr[i]=sc.nextInt();
+        for (int i = 0; i < length; i++) {
+            arr[i] = sc.nextInt();
         }
 
-        int max=arr[0];
+        int max = arr[0];
         
-        for(int i=0;i<length;i++){
-            if(arr[i]>max){
-                max=arr[i];
+        for (int i = 0; i < length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
             }
         }
         System.out.println(max);
