@@ -14,13 +14,6 @@ public class ShootingGame {
         char[][] gameBoard = createBoard();
         int attempts = 0;
 
-        for (int[] arr : targetArr) {
-            for (int a : arr) {
-                System.out.print(a + " ");
-            }
-            System.out.println();
-        }
-
         printBoard(gameBoard);
         System.out.println("All set. Get ready to rumble");
         while (attempts < 3) {
@@ -36,6 +29,8 @@ public class ShootingGame {
                 continue;
             }
             int col = sc.nextInt();
+
+            sc.nextLine();
 
             if (row >= 5 || row < 0 || col >= 5 || col < 0) {
                 System.out.println("Invalid input.Enter again: ");
