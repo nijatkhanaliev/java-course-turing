@@ -8,7 +8,10 @@ public class StringLesson {
         //System.out.println(args[0] +" " + args[1]);
 
         String s = "hello";
-        // s = "how are you"; //this creates new string object in pool
+        s = "go to course"; //this creates new string object in pool
+        String s2 = null;
+        System.out.println(s+s2);// + convert all to string
+
         changeString(s);
         System.out.println(s);
 
