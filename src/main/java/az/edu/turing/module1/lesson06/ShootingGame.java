@@ -1,6 +1,7 @@
 package az.edu.turing.module1.lesson06;
 
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,26 +18,28 @@ public class ShootingGame {
         printBoard(gameBoard);
         System.out.println("All set. Get ready to rumble");
         while (attempts < 3) {
-            System.out.println("Enter a row and column: ");
+            System.out.println("Enter row");
             if (!isInputValid(sc)) {
                 sc.nextLine();
                 continue;
             }
             int row = sc.nextInt();
+            sc.nextLine();
 
+            System.out.println("Enter column");
             if (!isInputValid(sc)) {
                 sc.nextLine();
                 continue;
             }
             int col = sc.nextInt();
-
             sc.nextLine();
 
-            if (row >= 5 || row < 0 || col >= 5 || col < 0) {
+            if (row > 5 || row <= 0 || col > 5 || col <= 0) {
                 System.out.println("Invalid input.Enter again: ");
                 continue;
             }
-
+            row = row - 1;
+            col = col - 1;
             if (isExist(row, col, targetArr, targetArr.length) && gameBoard[row][col] != 'x') {
                 System.out.println("You have won!");
                 gameBoard[row][col] = 'x';
@@ -56,16 +59,30 @@ public class ShootingGame {
 
     public static int[][] createTargetArr() {
         int[][] targetArr = new int[3][2];
-        int row;
-        int col;
+        int selection = random.nextInt(2);
+        int row,col;
 
-        for (int i = 0; i < targetArr.length; i++) {
-            row = random.nextInt(5);
-            col = random.nextInt(5);
-            while (isExist(row, col, targetArr, i)) {
-                row = random.nextInt(5);
-                col = random.nextInt(5);
+        targetArr[0][0] = random.nextInt(5);
+        targetArr[0][1] = random.nextInt(5);
+
+        for(int i=1;i<targetArr.length;i++){
+            if(selection==0){
+                row = targetArr[0][0] + random.nextInt(-1,2);
+                col = targetArr[0][1];
+
+                while(isExist(row,col,targetArr,i) || row>=5 || row<0 ){
+                    row = targetArr[i-1][0] + random.nextInt(-1,2);
+                }
+
+            }else{
+                row = targetArr[0][0];
+                col = targetArr[0][1] + random.nextInt(-1,2);
+
+                while(isExist(row,col,targetArr,i) || col>=5 || col<0 ){
+                    col = targetArr[i-1][0] + random.nextInt(-1,2);
+                }
             }
+
 
             targetArr[i][0] = row;
             targetArr[i][1] = col;
@@ -99,21 +116,27 @@ public class ShootingGame {
     public static char[][] createBoard() {
         char[][] board = new char[5][5];
         for (char[] chars : board) {
-            for (int i = 0; i < chars.length; i++) {
-                chars[i] = '-';
-            }
+            Arrays.fill(chars, '-');
         }
 
         return board;
     }
 
     public static void printBoard(char[][] board) {
-        for (char[] chars : board) {
-            for (char ch : chars) {
-                System.out.print(ch);
+        for (int i = 0; i <= board.length; i++) {
+            System.out.print(i + "  ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < board.length; i++) {
+            System.out.print(i + 1);
+            System.out.print("  ");
+            for (int j = 0; j < board.length; j++) {
+                System.out.print(board[i][j] + "  ");
             }
             System.out.println();
         }
+
     }
 
 }
