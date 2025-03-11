@@ -2,7 +2,7 @@ package az.edu.turing.module2.demouniversity;
 
 import java.util.Arrays;
 
-public class Professor extends Person{
+public class Professor extends Person {
     private String department;
     private String[] subjects;
 
@@ -28,9 +28,10 @@ public class Professor extends Person{
     }
 
     private int count;
-    public void addSubject(String newSubject){
-        for(String subject : subjects){
-            if(subject.equalsIgnoreCase(newSubject)){
+
+    public void addSubject(String newSubject) {
+        for (String subject : subjects) {
+            if (subject.equalsIgnoreCase(newSubject)) {
                 System.out.println("Subject has already exists");
                 return;
             }
@@ -39,8 +40,8 @@ public class Professor extends Person{
         count++;
     }
 
-    public String getSubjectList(){
-        return String.join(",",subjects);
+    public String getSubjectList() {
+        return String.join(",", subjects);
     }
 
     @Override
