@@ -37,6 +37,61 @@ public class University {
         this.courses = courses;
     }
 
+    private int personCount;
+
+    public void addPerson(Person newPerson) {
+        for (Person person : people) {
+            if (person.getId() == newPerson.getId()) {
+                System.out.println("Person has already exists");
+                return;
+            }
+        }
+
+        people[personCount] = newPerson;
+        personCount++;
+    }
+
+    private int courseCount;
+
+    public void addCourse(Course newCourse) {
+        for (Course course : courses) {
+            if (course.getCourseCode() == newCourse.getCourseCode()) {
+                System.out.println("Course has already exists");
+                return;
+            }
+        }
+        courses[courseCount] = newCourse;
+        courseCount++;
+    }
+
+    public void displayAllPeople() {
+        for (Person person : people) {
+            System.out.println(person);
+        }
+    }
+
+    public Person searchPersonById(int id) {
+        for (Person person : people) {
+            if (person.getId() == id) {
+                return person;
+            }
+        }
+
+        System.out.println("Person not found");
+        return null;
+    }
+
+    public Course searchByCourseCode(int courseCode) {
+        for (Course course : courses) {
+            if (course.getCourseCode() == courseCode) {
+                return course;
+            }
+        }
+
+        System.out.println("Course not found");
+        return null;
+    }
+
     @Override
     public String toString() {
         return "University{" +
