@@ -30,6 +30,11 @@ public class Professor extends Person {
     private int count;
 
     public void addSubject(String newSubject) {
+        if(count>=subjects.length){
+            System.out.println("You can add " + subjects.length + " subject");
+            return;
+        }
+
         for (String subject : subjects) {
             if (subject.equalsIgnoreCase(newSubject)) {
                 System.out.println("Subject has already exists");
