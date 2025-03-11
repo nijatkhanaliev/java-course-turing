@@ -50,6 +50,12 @@ public class Course {
     private int count;
 
     public void addStudent(Student newStudent) {
+
+        if(count>=students.length){
+            System.out.println("You can add " + students.length + " student");
+            return;
+        }
+
         for (Student student : students) {
             if (student.getId() == newStudent.getId()) {
                 System.out.println("Student has already exists");
