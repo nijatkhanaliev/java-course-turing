@@ -54,6 +54,11 @@ public class University {
     private int courseCount;
 
     public void addCourse(Course newCourse) {
+        if (courseCount >= courses.length) {
+            System.out.println("You can add " + courses.length + " course");
+            return;
+        }
+
         for (Course course : courses) {
             if (course.getCourseCode() == newCourse.getCourseCode()) {
                 System.out.println("Course has already exists");
