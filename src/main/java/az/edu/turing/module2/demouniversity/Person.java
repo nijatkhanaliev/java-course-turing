@@ -12,6 +12,10 @@ public abstract class Person {
     }
 
     public void setId(int id) {
+        if(id<=0){
+            System.out.println("Invalid id");
+            return;
+        }
         this.id = id;
     }
 
@@ -28,6 +32,10 @@ public abstract class Person {
     }
 
     public void setAge(int age) {
+        if(age<17){
+            System.out.println("Invalid input");
+            return;
+        }
         this.age = age;
     }
 
@@ -46,7 +54,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "id=" + id +
+        return  "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age;
     }
