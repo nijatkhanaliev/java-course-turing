@@ -56,11 +56,16 @@ public class Course {
         }
 
         for (Student student : students) {
-            if (student.getId() == newStudent.getId()) {
-                System.out.println("Student has already exists");
+            if (student != null) {
+                if (student.getId() == newStudent.getId()) {
+                    System.out.println("Student has already exists");
+                    return;
+                }
+            } else {
                 return;
             }
         }
+
         students[count] = newStudent;
         count++;
     }
@@ -68,7 +73,11 @@ public class Course {
     public double calculateCourseGpa() {
         double sum = 0;
         for (Student student : students) {
-            sum += student.calculateStudentGpa();
+            if (student != null) {
+                sum += student.calculateStudentGpa();
+            } else {
+                break;
+            }
         }
 
         return (sum / students.length);
