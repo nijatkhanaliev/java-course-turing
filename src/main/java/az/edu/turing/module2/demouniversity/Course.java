@@ -47,6 +47,28 @@ public class Course {
         this.students = students;
     }
 
+    private int count;
+
+    public void addStudent(Student newStudent) {
+        for (Student student : students) {
+            if (student.getId() == newStudent.getId()) {
+                System.out.println("Student has already exists");
+                return;
+            }
+        }
+        students[count] = newStudent;
+        count++;
+    }
+
+    public double calculateCourseGpa() {
+        double sum = 0;
+        for (Student student : students) {
+            sum += student.calculateStudentGpa();
+        }
+
+        return (sum / students.length);
+    }
+
     @Override
     public String toString() {
         return "Course{" +
