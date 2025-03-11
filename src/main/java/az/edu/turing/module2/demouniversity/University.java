@@ -40,6 +40,11 @@ public class University {
     private int personCount;
 
     public void addPerson(Person newPerson) {
+        if (personCount >= people.length) {
+            System.out.println("You can add " + people.length + " people");
+            return;
+        }
+
         for (Person person : people) {
             if (person.getId() == newPerson.getId()) {
                 System.out.println("Person has already exists");
