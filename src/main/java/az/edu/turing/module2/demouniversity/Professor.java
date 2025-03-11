@@ -36,17 +36,37 @@ public class Professor extends Person {
         }
 
         for (String subject : subjects) {
-            if (subject.equalsIgnoreCase(newSubject)) {
-                System.out.println("Subject has already exists");
-                return;
+            if (subject != null) {
+                if (subject.equalsIgnoreCase(newSubject)) {
+                    System.out.println("Subject has already exists");
+                    return;
+                }
+            } else {
+                break;
             }
         }
+
         subjects[count] = newSubject;
         count++;
     }
 
     public String getSubjectList() {
-        return String.join(",", subjects);
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+
+        for (String subject : subjects) {
+            if (subject != null) {
+                if (count == subjects.length - 1) {
+                    sb.append(subject);
+                } else {
+                    count++;
+                    sb.append(subject).append(",");
+                }
+            } else {
+                break;
+            }
+        }
+        return sb.toString();
     }
 
     @Override
