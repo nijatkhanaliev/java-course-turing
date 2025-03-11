@@ -46,9 +46,13 @@ public class University {
         }
 
         for (Person person : people) {
-            if (person.getId() == newPerson.getId()) {
-                System.out.println("Person has already exists");
-                return;
+            if (person != null) {
+                if (person.getId() == newPerson.getId()) {
+                    System.out.println("Person has already exists");
+                    return;
+                }
+            } else {
+                break;
             }
         }
 
@@ -65,9 +69,13 @@ public class University {
         }
 
         for (Course course : courses) {
-            if (course.getCourseCode() == newCourse.getCourseCode()) {
-                System.out.println("Course has already exists");
-                return;
+            if (course != null) {
+                if (course.getCourseCode() == newCourse.getCourseCode()) {
+                    System.out.println("Course has already exists");
+                    return;
+                }
+            } else {
+                break;
             }
         }
         courses[courseCount] = newCourse;
@@ -76,14 +84,22 @@ public class University {
 
     public void displayAllPeople() {
         for (Person person : people) {
-            System.out.println(person);
+            if (person != null) {
+                System.out.println(person);
+            } else {
+                return;
+            }
         }
     }
 
     public Person searchPersonById(int id) {
         for (Person person : people) {
-            if (person.getId() == id) {
-                return person;
+            if (person != null) {
+                if (person.getId() == id) {
+                    return person;
+                }
+            } else {
+                break;
             }
         }
 
@@ -93,8 +109,12 @@ public class University {
 
     public Course searchByCourseCode(int courseCode) {
         for (Course course : courses) {
-            if (course.getCourseCode() == courseCode) {
-                return course;
+            if (course != null) {
+                if (course.getCourseCode() == courseCode) {
+                    return course;
+                }
+            } else {
+                break;
             }
         }
 
