@@ -40,33 +40,53 @@ public class Student extends Person {
     private int count;
 
     public void enrollCourse(Course course) {
+        if (count >= courses.length) {
+            System.out.println("You can add " + courses.length + " course");
+            return;
+        }
+
         for (Course cr : courses) {
-            if (cr.getCourseCode() == course.getCourseCode()) {
-                System.out.println("Course has already enrolled ");
-                return;
+            if (cr != null) {
+                if (cr.getCourseCode() == course.getCourseCode()) {
+                    System.out.println("Course has already enrolled ");
+                    return;
+                }
+            } else {
+                break;
             }
         }
+
         courses[count] = course;
         count++;
     }
 
     public void updateGrade(int courseCode, double newGrade) {
         for (int i = 0; i < courses.length; i++) {
-            if (courses[i].getCourseCode() == courseCode) {
-                grades[i] = newGrade;
-                return;
+            if (courses[i] != null) {
+                if (courses[i].getCourseCode() == courseCode) {
+                    grades[i] = newGrade;
+                    return;
+                }
+            } else {
+                break;
             }
         }
+
         System.out.println("Course does not exists");
     }
 
     public void updateGrade(String courseName, double newGrade) {
         for (int i = 0; i < courses.length; i++) {
-            if (courses[i].getCourseName().equalsIgnoreCase(courseName)) {
-                grades[i] = newGrade;
-                return;
+            if (courses[i] != null) {
+                if (courses[i].getCourseName().equalsIgnoreCase(courseName)) {
+                    grades[i] = newGrade;
+                    return;
+                }
+            } else {
+                break;
             }
         }
+
         System.out.println("Course does not exists");
     }
 
