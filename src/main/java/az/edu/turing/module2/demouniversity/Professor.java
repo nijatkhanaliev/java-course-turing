@@ -30,7 +30,7 @@ public class Professor extends Person {
     private int count;
 
     public void addSubject(String newSubject) {
-        if(count>=subjects.length){
+        if (count >= subjects.length) {
             System.out.println("You can add " + subjects.length + " subject");
             return;
         }
