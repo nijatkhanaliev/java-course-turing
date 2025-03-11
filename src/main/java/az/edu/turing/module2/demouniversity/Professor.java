@@ -27,6 +27,22 @@ public class Professor extends Person{
         this.subjects = subjects;
     }
 
+    private int count;
+    public void addSubject(String newSubject){
+        for(String subject : subjects){
+            if(subject.equalsIgnoreCase(newSubject)){
+                System.out.println("Subject has already exists");
+                return;
+            }
+        }
+        subjects[count] = newSubject;
+        count++;
+    }
+
+    public String getSubjectList(){
+        return String.join(",",subjects);
+    }
+
     @Override
     public String toString() {
         return "Professor{" +
