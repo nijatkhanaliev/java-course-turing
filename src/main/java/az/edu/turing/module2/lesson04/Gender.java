@@ -10,4 +10,12 @@ public enum Gender {
         this.value = value;
     }
 
+    public static Gender getGenderByName(String genderName){
+        return Gender.valueOf(genderName);
+    }
+
+    public String getValue(){
+        return this.value;
+    }
+
 }

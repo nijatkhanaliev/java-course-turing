@@ -13,6 +13,7 @@ public class GenderDemo {
 //            }
 //        }
 
+        System.out.println(Gender.MALE.getValue());
 
         User user = new User(stringBuilder,"Khanaliev",userGender,new int[]{1,2,3,4});
 
