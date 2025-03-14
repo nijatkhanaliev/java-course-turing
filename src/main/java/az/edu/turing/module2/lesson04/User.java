@@ -28,6 +28,6 @@ public final class User {
     }
 
     public int[] getArr() {
-        return Arrays.copyOf(arr,arr.length);
+        return Arrays.copyOf(arr, arr.length);
     }
 }

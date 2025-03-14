@@ -6,15 +6,20 @@ public enum Gender {
 
     private String value;
 
-    Gender(String value){
+    Gender(String value) {
         this.value = value;
     }
 
-    public static Gender getGenderByName(String genderName){
-        return Gender.valueOf(genderName);
+    public static Gender getGenderByName(String genderName) {
+        for (Gender gender : Gender.values()) {
+            if (genderName.equalsIgnoreCase(gender.toString())) {
+                return gender;
+            }
+        }
+        return null;
     }
 
-    public String getValue(){
+    public String getValue() {
         return this.value;
     }
 

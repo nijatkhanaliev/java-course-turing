@@ -7,17 +7,15 @@ public class GenderDemo {
         String enteredGender = "male".toUpperCase();
         Gender userGender = Gender.valueOf(enteredGender);
 
-//        for(Gender gender : Gender.values()){
-//            if(enteredGender.equalsIgnoreCase(gender.toString())){
-//                userGender = gender;
-//            }
-//        }
 
         System.out.println(Gender.MALE.getValue());
 
-        User user = new User(stringBuilder,"Khanaliev",userGender,new int[]{1,2,3,4});
+        System.out.println(Gender.getGenderByName("male") == null ? "null" :
+                Gender.getGenderByName("male"));
 
-        user.getArr()[0]=35;
+        User user = new User(stringBuilder, "Khanaliev", userGender, new int[]{1, 2, 3, 4});
+
+        user.getArr()[0] = 35;
         stringBuilder.append(" hello");
 
         System.out.println(user.getName());
