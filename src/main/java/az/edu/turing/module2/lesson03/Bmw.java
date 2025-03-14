@@ -1,6 +1,6 @@
 package az.edu.turing.module2.lesson03;
 
-public class Bmw extends Car{
+public final class Bmw extends Car{
 
     @Override
     public void start() {

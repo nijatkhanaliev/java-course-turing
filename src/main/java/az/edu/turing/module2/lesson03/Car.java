@@ -1,6 +1,6 @@
 package az.edu.turing.module2.lesson03;
 
-public abstract class Car {
+public abstract sealed class Car permits Bmw,Mercedes,Hyundai {
     private String name;
     private String model;
     private String color;

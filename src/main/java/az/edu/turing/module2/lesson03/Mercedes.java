@@ -1,6 +1,6 @@
 package az.edu.turing.module2.lesson03;
 
-public class Mercedes extends Car implements Flyable{
+public final class Mercedes extends Car implements Flyable{
 
     @Override
     public void start() {
