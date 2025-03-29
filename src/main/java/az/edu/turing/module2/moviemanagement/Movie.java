@@ -1,4 +1,4 @@
-package az.edu.turing.module2.moviemanagment;
+package az.edu.turing.module2.moviemanagement;
 
 public class Movie {
     private String name;
@@ -32,7 +32,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "name='" + name + "  " +
+        return "name=" + name + "  " +
                 "rating=" + rating;
     }
 }
