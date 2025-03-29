@@ -4,9 +4,7 @@ public class Movie {
     private String name;
     private double rating;
 
-    public Movie(String name, double rating) {
-        this.name = name;
-        this.rating = rating;
+    public Movie() {
     }
 
     public String getName() {
@@ -21,7 +19,7 @@ public class Movie {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Double rating) {
         if (rating < 0.0 || rating > 10.0) {
             System.out.println("Rating cannot be more than 10.0 or less than 0.0");
             return;
