@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class Student extends Person {
     private String major;
     private Course[] courses;
-    private double[] grades;
+    private Double[] grades;
 
     public Student(String major, int limit) {
         this.major = major;
         this.courses = new Course[limit];
-        this.grades = new double[limit];
+        this.grades = new Double[limit];
     }
 
     public String getMajor() {
@@ -29,11 +29,11 @@ public class Student extends Person {
         this.courses = courses;
     }
 
-    public double[] getGrades() {
+    public Double[] getGrades() {
         return grades;
     }
 
-    public void setGrades(double[] grades) {
+    public void setGrades(Double[] grades) {
         this.grades = grades;
     }
 
@@ -92,11 +92,15 @@ public class Student extends Person {
 
     public double calculateStudentGpa() {
         double sum = 0;
-        for (double grade : grades) {
-            sum += grade;
+        int count=0;
+        for (Double grade : grades) {
+            if(grade!=null){
+                sum += grade;
+                count++;
+            }
         }
 
-        return (sum / grades.length);
+        return (sum / count);
     }
 
     @Override

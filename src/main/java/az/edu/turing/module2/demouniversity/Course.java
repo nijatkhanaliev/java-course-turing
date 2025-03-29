@@ -72,15 +72,17 @@ public class Course {
 
     public double calculateCourseGpa() {
         double sum = 0;
+        int count = 0;
         for (Student student : students) {
             if (student != null) {
                 sum += student.calculateStudentGpa();
+                count++;
             } else {
                 break;
             }
         }
 
-        return (sum / students.length);
+        return (sum / count);
     }
 
     @Override
