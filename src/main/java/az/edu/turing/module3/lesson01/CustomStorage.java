@@ -35,7 +35,7 @@ public class CustomStorage {
                 if (!isIndexSame) {
                     newStorage[i] = storage[i];
                 } else {
-                    newStorage[i-1] = storage[i];
+                    newStorage[i] = storage[i + 1];
                 }
             }
 
