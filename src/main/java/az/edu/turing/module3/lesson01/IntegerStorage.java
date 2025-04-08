@@ -33,7 +33,7 @@ public class IntegerStorage {
                 if(!isSameIndex){
                     newIntegers[i] = integers[i];
                 }else{
-                    newIntegers[i] = integers[i+1];
+                    newIntegers[i-1] = integers[i];
                 }
             }
 
