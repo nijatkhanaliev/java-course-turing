@@ -6,6 +6,20 @@ public class Main {
 
     }
 
+    public static void storeObjects(){
+        CustomStorage customStorage = new CustomStorage();
+
+        customStorage.add(6); // int automatically auto boxes into Integers
+        customStorage.add(6.7);
+        customStorage.add(29);
+        customStorage.add(76.745);
+
+        customStorage.remove(0);
+        System.out.println(customStorage.get(0));
+
+        int a = (int) customStorage.get(0); // cast exception
+    }
+
     public static void storeIntegers(){
         IntegerStorage integerStorage = new IntegerStorage(); // this works for only integers
 
