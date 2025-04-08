@@ -1,2 +1,48 @@
-package az.edu.turing.module3.lesson01;public class GenericCustomStorage {
+package az.edu.turing.module3.lesson01;
+
+public class GenericCustomStorage<T> {
+   private Object[] storage = new Object[0];
+
+    public void add(T a) {
+        Object[] newStorage = new Object[storage.length + 1];
+
+        for (int i = 0; i < storage.length; i++) {
+            newStorage[i] = storage[i];
+        }
+        storage = newStorage;
+
+        storage[storage.length - 1] = a;
+    }
+
+    public T get(int index) {
+        if (index >= storage.length) {
+            System.out.println("index is higher than array length");
+            return null;
+        }
+
+        return (T) storage[index];
+    }
+
+    public void remove(int index) {
+        Object[] newStorage = new Object[storage.length - 1];
+        boolean isIndexSame = false;
+
+        for (int i = 0; i < storage.length; i++) {
+            if (i == index) {
+                isIndexSame = true;
+            } else {
+                if (!isIndexSame) {
+                    newStorage[i] = storage[i];
+                } else {
+                    newStorage[i-1] = storage[i];
+                }
+            }
+
+        }
+
+        storage = newStorage;
+    }
+
+
+
 }
