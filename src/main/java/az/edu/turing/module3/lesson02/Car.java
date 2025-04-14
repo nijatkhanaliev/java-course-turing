@@ -17,8 +17,8 @@ public class Car implements Comparable<Car>{
         this.name = name;
     }
 
-    public int getSpeed() {
-        return speed;
+    public int getSpeed(){
+        return this.speed;
     }
 
     public void setSpeed(int speed) {
