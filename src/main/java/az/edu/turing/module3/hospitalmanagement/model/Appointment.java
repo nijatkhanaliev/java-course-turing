@@ -1,5 +1,7 @@
 package az.edu.turing.module3.hospitalmanagement.model;
 
+import az.edu.turing.module3.hospitalmanagement.manager.HospitalManager;
+
 import java.time.LocalDateTime;
 
 public class Appointment {
@@ -57,13 +59,16 @@ public class Appointment {
         this.note = note;
     }
 
-    public Appointment fromString(String line){
+    public static Appointment fromString(String line){
         String[] arr = line.split("\\|");
         String id = arr[0].split("=")[1].trim();
         String patientId = arr[1].split("=")[1].trim();
         String doctorId = arr[2].split("=")[1].trim();
         LocalDateTime dateTime = LocalDateTime.parse(arr[3].split("=")[1].trim());
         String note = arr[4].split("=")[1].trim();
+
+        Patient patient = HospitalManager.patients.stream().filter((p)->p.getId().equals(patientId)).findFirst().get();
+        Doctor doctor = HospitalManager.doctors.stream().filter((d)->d.getId().equalsIgnoreCase(doctorId)).findFirst().get();
 
         return new Appointment(id,patient,doctor,dateTime,note);
     }

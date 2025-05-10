@@ -1,5 +1,7 @@
 package az.edu.turing.module3.hospitalmanagement.model;
 
+import az.edu.turing.module3.hospitalmanagement.manager.HospitalManager;
+
 public class Room {
     private int roomNumber;
     private boolean isOccupied;
@@ -21,35 +23,50 @@ public class Room {
         return isOccupied;
     }
 
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
-    }
 
     public Patient getPatient() {
         return patient;
     }
 
     public void assignPatient(Patient patient) {
+        if (this.patient != null) {
+            System.out.println("it already occupied");
+            return;
+        }
+
+        if(patient==null){
+            clearRoom();
+            return;
+        }
+
         this.patient = patient;
+        this.isOccupied = true;
     }
+
 
     public void clearRoom() {
         this.patient = null;
         this.isOccupied = false;
     }
 
-    public Room fromString(String line, Patient patient) {
+    public static Room fromString(String line,Patient patient) {
         String[] arr = line.split("\\|");
         int roomNumber = Integer.parseInt(arr[0].split("=")[1].trim());
         boolean isOccupied = Boolean.parseBoolean(arr[1].split("=")[1].trim());
-        String patientId = null;
+        String patientId;
         if (isOccupied) {
             patientId = arr[2].split("=")[1].trim();
+        } else {
+            patientId = null;
         }
 
         Room room = new Room(roomNumber);
-        room.setOccupied(isOccupied);
-        if (patient.getId().equalsIgnoreCase(patientId)) {
+        if(patientId==null){
+            room.assignPatient(null);
+        }else if(!patient.getId().equals(patientId)){
+           Patient patient1 = HospitalManager.patients.stream().filter((p)->p.getId().equals(patientId)).findFirst().get();
+           room.assignPatient(patient1);
+        }else{
             room.assignPatient(patient);
         }
 
@@ -60,8 +77,7 @@ public class Room {
     public String toString() {
         if (!isOccupied && patient == null) {
             return "roomNumber=" + roomNumber +
-                    " | isOccupied=" + isOccupied +
-                    " | ";
+                    " | isOccupied=" + isOccupied;
         }
         return "roomNumber=" + roomNumber +
                 " | isOccupied=" + isOccupied +

@@ -1,0 +1,2 @@
+roomNumber=1 | isOccupied=true | patientId=1
+roomNumber=2 | isOccupied=true | patientId=2

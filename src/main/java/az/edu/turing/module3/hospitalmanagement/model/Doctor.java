@@ -32,7 +32,7 @@ public class Doctor extends Person{
 
     @Override
     public String toString() {
-        return " | id=" + id +
+        return "id=" + id +
                 " | name=" + name +
                 " | birthDate=" + birthDate +
                 " | gender=" + gender +
