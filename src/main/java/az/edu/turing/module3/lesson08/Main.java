@@ -1,26 +1,22 @@
 package az.edu.turing.module3.lesson08;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class Main {
-    public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
-            Thread thread = new Thread(() -> {
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter("nicat.txt", true))) {
-                    writer.write("salam");
-                } catch (IOException e) {
-                    System.out.println("Write salam method " + e.getMessage());
-                }
-            });
-            if (i == 3) {
-                thread.setPriority(8);
-            } else if (i == 2) {
-                thread.setPriority(4);
-            }
-            thread.start();
-        }
 
+    public static void main(String[] args) throws InterruptedException {
+        List<Integer> list = new ArrayList<>();
+        int count = 0;
+
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
+        executorService.scheduleAtFixedRate(new MyProcedure(list), 0, 100, TimeUnit.MILLISECONDS);
+        executorService.scheduleWithFixedDelay(new MyConsumer(list,count),0,200,TimeUnit.MILLISECONDS);
+
+        Thread.sleep(5000);
+        executorService.shutdown();
+        System.out.println(list);
     }
+
 }
