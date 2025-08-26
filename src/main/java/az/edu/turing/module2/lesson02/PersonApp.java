@@ -1,7 +1,5 @@
 package az.edu.turing.module2.lesson02;
 
-import java.util.Random;
-
 public class PersonApp {
 
     public static void main(String[] args) {
