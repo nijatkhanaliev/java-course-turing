@@ -4,14 +4,6 @@ import java.io.IOException;
 
 public class Car {
 
-//    static {
-//       throwMyException();
-//    }
-//
-//    public static void throwMyException(){
-//        throw new IllegalArgumentException();
-//    }
-
     public void practice() throws IOException{
         throw new IOException();
     }
