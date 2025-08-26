@@ -32,12 +32,12 @@ public class Main {
             }
 
             return a/b;
-        }catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
 
             System.exit(0);
             throw e;
-        } finally {
+        }finally {
             return 7;
         }
     }
