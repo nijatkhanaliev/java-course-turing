@@ -5,7 +5,7 @@ import java.util.List;
 public class MyConsumer implements Runnable{
     private final List<Integer> list;
 
-    public MyConsumer(List<Integer> list,int count) {
+    public MyConsumer(List<Integer> list) {
         this.list = list;
     }
 
