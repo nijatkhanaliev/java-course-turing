@@ -8,11 +8,10 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         List<Integer> list = new ArrayList<>();
-        int count = 0;
 
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
         executorService.scheduleAtFixedRate(new MyProcedure(list), 0, 100, TimeUnit.MILLISECONDS);
-        executorService.scheduleWithFixedDelay(new MyConsumer(list,count),0,200,TimeUnit.MILLISECONDS);
+        executorService.scheduleWithFixedDelay(new MyConsumer(list),0,200,TimeUnit.MILLISECONDS);
 
         Thread.sleep(5000);
         executorService.shutdown();
